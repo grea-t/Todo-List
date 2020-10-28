@@ -13,9 +13,10 @@ module.exports = {
       loader: 'vue-loader'
     }, {
       test: /\.(jpg|jpeg|png|svg)$/,
-      loader: 'file-loader',
+      loader: 'url-loader',
       options: {
-        name: '[name].[ext]'
+        name: '[name].[ext]',
+        limit: 2048
       }
     }]
   },
