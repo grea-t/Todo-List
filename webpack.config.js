@@ -7,7 +7,9 @@ module.exports = {
   mode: "development",
   entry: './src/main.js',
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    open: true,
+    hot: true
   },
   output: {
     filename: "main.js",
