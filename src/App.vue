@@ -2,6 +2,8 @@
   <div>App</div>
 </template>
 <script>
+  import img from './assets/images/bgimg.png'
+
   export default {
     name: 'App'
   }

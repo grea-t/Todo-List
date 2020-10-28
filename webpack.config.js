@@ -11,6 +11,12 @@ module.exports = {
     rules: [{
       test: /\.vue$/,
       loader: 'vue-loader'
+    }, {
+      test: /\.(jpg|jpeg|png|svg)$/,
+      loader: 'file-loader',
+      options: {
+        name: '[name].[ext]'
+      }
     }]
   },
   plugins: [
