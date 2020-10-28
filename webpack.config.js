@@ -6,6 +6,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 module.exports = {
   mode: "development",
   entry: './src/main.js',
+  devServer: {
+    contentBase: './dist'
+  },
   output: {
     filename: "main.js",
     path: path.resolve(__dirname, 'dist')
@@ -26,7 +29,11 @@ module.exports = {
       use: ['style-loader', 'css-loader']
     }, {
       test: /\.styl(us)?$/,
-      use: ['style-loader', 'css-loader', 'stylus-loader']
+      use: [
+        'style-loader',
+        'css-loader',
+        'stylus-loader'
+      ]
     }]
   },
   plugins: [

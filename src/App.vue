@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h1>App</h1>
+    <h1>Todo List</h1>
+    <input type="text">
+    <button>添加</button>
+    <ul>
+      <li>todo1</li>
+      <li>todo2</li>
+      <li>todo3</li>
+    </ul>
   </div>
 </template>
 <script>
@@ -11,6 +18,5 @@
   }
 </script>
 <style lang="stylus" scoped>
-  h1
-    color: red
+
 </style>
