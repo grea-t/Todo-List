@@ -18,6 +18,12 @@ module.exports = {
         name: '[name].[ext]',
         limit: 2048
       }
+    }, {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
+    }, {
+      test: /\.styl(us)?$/,
+      use: ['style-loader', 'css-loader', 'stylus-loader']
     }]
   },
   plugins: [

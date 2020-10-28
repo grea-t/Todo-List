@@ -1,13 +1,16 @@
 <template>
-  <div>App</div>
+  <div>
+    <h1>App</h1>
+  </div>
 </template>
 <script>
-  import img from './assets/images/bgimg.png'
+  import './assets/styles/global.styl'
 
   export default {
     name: 'App'
   }
 </script>
-<style scoped>
-
+<style lang="stylus" scoped>
+  h1
+    color: red
 </style>
