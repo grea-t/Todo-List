@@ -15,6 +15,7 @@
     text-align center
 
     h1
+      margin 20px
       font-size 100px
       font-weight 100
       color navajowhite
