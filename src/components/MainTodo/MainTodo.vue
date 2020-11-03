@@ -1,12 +1,18 @@
 <template>
   <div class="main-todo">
     <input type="text" class="add-todo" placeholder="What to do?" autofocus/>
+    <todo-item></todo-item>
   </div>
 </template>
 
 <script>
+  import TodoItem from "./coms/TodoItem.vue";
+
   export default {
-    name: "MainTodo"
+    name: "MainTodo",
+    components: {
+      TodoItem
+    }
   }
 </script>
 
@@ -24,7 +30,7 @@
       font-family inherit
       font-weight inherit
       color inherit
-      border-bottom none
+      border none
       outline none
       box-sizing border-box
 </style>
