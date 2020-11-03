@@ -1,34 +1,19 @@
 <template>
   <div>
-    <h1>Todo List</h1>
-    <input type="text" v-model="content"/>
-    <button @click="addTodo">添加</button>
-    <ul>
-      <li v-for="(item,index) of todoData" :key="index">{{item}}</li>
-    </ul>
+    <main-header></main-header>
   </div>
 </template>
 <script>
   import './assets/styles/global.styl'
+  import MainHeader from "./components/MainHeader.vue";
 
   export default {
     name: 'App',
-    data() {
-      return {
-        todoData: ['todo1', 'todo2', 'todo3'],
-        content: ''
-      }
-    },
-    methods: {
-      addTodo() {
-        if (this.content === "") return
-        this.todoData.push(this.content)
-        this.content = ''
-      }
+    components:{
+      MainHeader
     }
   }
 </script>
 <style lang="stylus" scoped>
-  li:nth-of-type(odd)
-    color blue
+
 </style>
