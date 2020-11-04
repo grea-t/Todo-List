@@ -2,11 +2,13 @@
   <div class="main-todo">
     <input type="text" class="add-todo" placeholder="What to do?" autofocus v-model="content" @keyup.enter="addTodo"/>
     <todo-item v-for="(item,index) in todoData" :key="index" :todo="item" @del="handleDeleteItem"></todo-item>
+    <todo-info></todo-info>
   </div>
 </template>
 
 <script>
   import TodoItem from "./coms/TodoItem.vue";
+  import TodoInfo from "./coms/TodoInfo.vue";
 
   let id = 0
   export default {
@@ -32,7 +34,8 @@
       }
     },
     components: {
-      TodoItem
+      TodoItem,
+      TodoInfo
     }
   }
 </script>
