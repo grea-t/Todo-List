@@ -1,7 +1,7 @@
 <template>
   <div class="main-todo">
     <input type="text" class="add-todo" placeholder="What to do?" autofocus v-model="content" @keyup.enter="addTodo"/>
-    <todo-item v-for="(item,index) in todoData" :key="index" :todo="item"></todo-item>
+    <todo-item v-for="(item,index) in todoData" :key="index" :todo="item" @del="handleDeleteItem"></todo-item>
   </div>
 </template>
 
@@ -26,6 +26,9 @@
           completed: false
         })
         this.content = ''
+      },
+      handleDeleteItem(id) {
+        this.todoData.splice(this.todoData.findIndex(item => item.id === id), 1)
       }
     },
     components: {

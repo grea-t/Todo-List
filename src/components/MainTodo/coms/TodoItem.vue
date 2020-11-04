@@ -1,8 +1,9 @@
+<!--suppress ALL -->
 <template>
-  <div class="todo-item">
-    <input type="checkbox">
-    <lable>{{todo.content}}</lable>
-    <button></button>
+  <div :class="['todo-item',todo.completed ? 'completed': '']">
+    <input type="checkbox" v-model="todo.completed"/>
+    <label>{{todo.content}}</label>
+    <button @click="delItem"></button>
   </div>
 </template>
 
@@ -11,11 +12,21 @@
     name: "TodoItem",
     props: {
       todo: Object
+    },
+    methods: {
+      delItem() {
+        this.$emit('del', this.todo.id)
+      }
     }
   }
 </script>
 
 <style lang="stylus" scoped>
+  .completed
+    label
+      color #d9d9d9
+      text-decoration line-through
+
   .todo-item
     display flex
     justify-content space-between
@@ -28,11 +39,6 @@
         content 'x'
         font-size 24px
         color rgb(254, 67, 101)
-
-    &:completed
-      label
-        color #d9d9d9
-        text-decoration line-through
 
     input
       width 50px
