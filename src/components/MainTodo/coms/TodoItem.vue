@@ -1,14 +1,17 @@
 <template>
   <div class="todo-item">
     <input type="checkbox">
-    <lable>todo1</lable>
+    <lable>{{todo.content}}</lable>
     <button></button>
   </div>
 </template>
 
 <script>
   export default {
-    name: "TodoItem"
+    name: "TodoItem",
+    props: {
+      todo: Object
+    }
   }
 </script>
 
@@ -18,6 +21,7 @@
     justify-content space-between
     padding 10px
     font-size 24px
+    border-top 1px solid rgba(0, 0, 0, 0.1)
 
     &:hover
       button:after
@@ -47,6 +51,7 @@
     label
       flex 1
       transition color 0.4s
+
     button
       width 40px
       background-color: transparent
