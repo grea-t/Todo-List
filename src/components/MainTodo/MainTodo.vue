@@ -1,8 +1,8 @@
 <template>
   <div class="main-todo">
     <input type="text" class="add-todo" placeholder="What to do?" autofocus v-model="content" @keyup.enter="addTodo"/>
-    <todo-item v-for="(item,index) in todoData" :key="index" :todo="item" @del="handleDeleteItem"></todo-item>
-    <todo-info :total="total"></todo-info>
+    <todo-item v-for="(item,index) in filterData" :key="index" :todo="item" @del="handleDeleteItem"></todo-item>
+    <todo-info :total="total" @toggleState="handleToggleState"></todo-info>
   </div>
 </template>
 
@@ -17,7 +17,8 @@
       return {
         todoData: [],
         content: '',
-        total: 0
+        total: 0,
+        filter: 'all'
       }
     },
     methods: {
@@ -32,6 +33,9 @@
       },
       handleDeleteItem(id) {
         this.todoData.splice(this.todoData.findIndex(item => item.id === id), 1)
+      },
+      handleToggleState(state) {
+        this.filter = state
       }
     },
     watch: {
@@ -39,6 +43,18 @@
         deep: true,
         handler() {
           this.total = this.todoData.filter(item => item.completed == false).length
+        }
+      }
+    },
+    computed: {
+      filterData() {
+        switch (this.filter) {
+          case "all":
+            return this.todoData
+          case "active":
+            return this.todoData.filter(item => item.completed == false)
+          case "completed":
+            return this.todoData.filter(item => item.completed == true)
         }
       }
     },

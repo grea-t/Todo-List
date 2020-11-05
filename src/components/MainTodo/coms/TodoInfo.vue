@@ -2,7 +2,8 @@
   <div class="todo-info">
     <span>{{total}} item left</span>
     <div>
-      <a v-for="(item,index) in states" :key="index">{{item}}</a>
+      <a :class="[state == item ? 'actived' : '']" v-for="(item,index) in states" :key="index"
+         @click="toggleState(item)">{{item}}</a>
     </div>
     <button>Clear Completed</button>
   </div>
@@ -16,9 +17,16 @@
     },
     data() {
       return {
-        states: ['all', 'active', 'completed']
+        states: ['all', 'active', 'completed'],
+        state: 'all'
       }
-    }
+    },
+    methods: {
+      toggleState(state) {
+        this.state = state
+        this.$emit('toggleState', state)
+      }
+    },
   }
 </script>
 
@@ -40,14 +48,14 @@
       width 200px
 
       a
-        padding 0 10px
-        border 1px solid rgb(252, 157, 154)
-        border-radius 5px
-        cursor pointer
+        padding: 0 10px
+        border: 1px solid rgb(252, 157, 154)
+        border-radius: 5px
+        cursor: pointer
 
         &:actived
           background-color: rgb(252, 157, 154)
-          color #fff
+          color: #fff
 
     button
       padding 0 10px
