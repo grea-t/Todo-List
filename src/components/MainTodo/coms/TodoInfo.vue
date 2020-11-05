@@ -56,7 +56,7 @@
         border-radius: 5px
         cursor: pointer
 
-        &:actived
+        &.actived
           background-color: rgb(252, 157, 154)
           color: #fff
 

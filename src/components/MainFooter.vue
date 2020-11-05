@@ -1,5 +1,5 @@
 <template>
-  <footer>Written By Grea-t</footer>
+  <footer>Written by Grea-t</footer>
 </template>
 
 <style lang="stylus" scoped>
