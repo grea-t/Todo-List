@@ -2,7 +2,7 @@
   <div class="main-todo">
     <input type="text" class="add-todo" placeholder="What to do?" autofocus v-model="content" @keyup.enter="addTodo"/>
     <todo-item v-for="(item,index) in todoData" :key="index" :todo="item" @del="handleDeleteItem"></todo-item>
-    <todo-info></todo-info>
+    <todo-info :total="total"></todo-info>
   </div>
 </template>
 
@@ -16,7 +16,8 @@
     data() {
       return {
         todoData: [],
-        content: ''
+        content: '',
+        total: 0
       }
     },
     methods: {
@@ -31,6 +32,14 @@
       },
       handleDeleteItem(id) {
         this.todoData.splice(this.todoData.findIndex(item => item.id === id), 1)
+      }
+    },
+    watch: {
+      todoData: {
+        deep: true,
+        handler() {
+          this.total = this.todoData.filter(item => item.completed == false).length
+        }
       }
     },
     components: {

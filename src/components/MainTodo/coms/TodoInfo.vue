@@ -1,6 +1,6 @@
 <template>
   <div class="todo-info">
-    <span>1 item left</span>
+    <span>{{total}} item left</span>
     <div>
       <a v-for="(item,index) in states" :key="index">{{item}}</a>
     </div>
@@ -11,6 +11,9 @@
 <script>
   export default {
     name: "TodoInfo",
+    props: {
+      total: Number
+    },
     data() {
       return {
         states: ['all', 'active', 'completed']
