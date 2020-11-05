@@ -5,7 +5,7 @@
       <a :class="[state == item ? 'actived' : '']" v-for="(item,index) in states" :key="index"
          @click="toggleState(item)">{{item}}</a>
     </div>
-    <button>Clear Completed</button>
+    <button @click="clearCompleted">Clear Completed</button>
   </div>
 </template>
 
@@ -25,8 +25,11 @@
       toggleState(state) {
         this.state = state
         this.$emit('toggleState', state)
+      },
+      clearCompleted() {
+        this.$emit('clearCompleted')
       }
-    },
+    }
   }
 </script>
 

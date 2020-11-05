@@ -2,7 +2,7 @@
   <div class="main-todo">
     <input type="text" class="add-todo" placeholder="What to do?" autofocus v-model="content" @keyup.enter="addTodo"/>
     <todo-item v-for="(item,index) in filterData" :key="index" :todo="item" @del="handleDeleteItem"></todo-item>
-    <todo-info :total="total" @toggleState="handleToggleState"></todo-info>
+    <todo-info :total="total" @toggleState="handleToggleState" @clearCompleted="handleClear"></todo-info>
   </div>
 </template>
 
@@ -36,6 +36,9 @@
       },
       handleToggleState(state) {
         this.filter = state
+      },
+      handleClear() {
+        this.todoData = this.todoData.filter(item => item.completed == false)
       }
     },
     watch: {
