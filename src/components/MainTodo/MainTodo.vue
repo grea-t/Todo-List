@@ -15,7 +15,7 @@
     name: "MainTodo",
     data() {
       return {
-        todoData: [],
+        todoData: JSON.parse(window.localStorage.getItem('todo_key') || '[]'),
         content: '',
         total: 0,
         filter: 'all'
@@ -38,14 +38,15 @@
         this.filter = state
       },
       handleClear() {
-        this.todoData = this.todoData.filter(item => item.completed == false)
+        this.todoData = this.todoData.filter(item => item.completed === false)
       }
     },
     watch: {
       todoData: {
         deep: true,
-        handler() {
-          this.total = this.todoData.filter(item => item.completed == false).length
+        handler(value) {
+          this.total = this.todoData.filter(item => item.completed === false).length
+          window.localStorage.setItem('todo_key', JSON.stringify(value))
         }
       }
     },
@@ -55,9 +56,9 @@
           case "all":
             return this.todoData
           case "active":
-            return this.todoData.filter(item => item.completed == false)
+            return this.todoData.filter(item => item.completed === false)
           case "completed":
-            return this.todoData.filter(item => item.completed == true)
+            return this.todoData.filter(item => item.completed === true)
         }
       }
     },

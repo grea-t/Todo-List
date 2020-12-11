@@ -2,7 +2,7 @@
   <div class="todo-info">
     <span>{{total}} item left</span>
     <div>
-      <a :class="[state == item ? 'actived' : '']" v-for="(item,index) in states" :key="index"
+      <a :class="[state === item ? 'actived' : '']" v-for="(item,index) in states" :key="index"
          @click="toggleState(item)">{{item}}</a>
     </div>
     <button @click="clearCompleted">Clear Completed</button>
